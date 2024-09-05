@@ -1,5 +1,5 @@
 <script setup>
-import { useRoute } from "vue-router";
+import { useRoute, RouterView } from "vue-router";
 import products from "../data/products.json";
 
 const router = useRoute();
@@ -20,6 +20,7 @@ const product = products.find(
     <div v-else>
       <p>Product not found.</p>
     </div>
+    <RouterView />
   </main>
 </template>
 
