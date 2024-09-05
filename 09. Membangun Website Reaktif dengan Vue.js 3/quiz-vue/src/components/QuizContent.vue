@@ -1,6 +1,11 @@
 <script setup>
 import { defineProps } from "vue";
 const { question } = defineProps(["question"]);
+
+const emit = defineEmits(["selectOption"]);
+const emitSelectionOption = (option) => {
+  emit("selectOption", option);
+};
 </script>
 
 <template>
@@ -11,6 +16,7 @@ const { question } = defineProps(["question"]);
     v-for="option in question.answers"
     :key="option.id"
     id="options-container"
+    @click="emitSelectionOption(option)"
   >
     <div class="option">
       <p class="option-label">{{ option.label }}</p>
