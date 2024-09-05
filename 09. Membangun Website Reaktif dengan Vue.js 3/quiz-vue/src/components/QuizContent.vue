@@ -1,19 +1,20 @@
+<script setup>
+import { defineProps } from "vue";
+const { question } = defineProps(["question"]);
+</script>
+
 <template>
   <section id="question-container">
-    <h1 class="question-title">What 1 + 1</h1>
+    <h1 class="question-title">{{ question.text }}</h1>
   </section>
-  <section id="options-container">
+  <section
+    v-for="option in question.answers"
+    :key="option.id"
+    id="options-container"
+  >
     <div class="option">
-      <p class="option-label">a</p>
-      <div class="option-value">1</div>
-    </div>
-    <div class="option">
-      <p class="option-label">a</p>
-      <div class="option-value">1</div>
-    </div>
-    <div class="option">
-      <p class="option-label">a</p>
-      <div class="option-value">1</div>
+      <p class="option-label">{{ option.label }}</p>
+      <div class="option-value">{{ option.text }}</div>
     </div>
   </section>
 </template>
