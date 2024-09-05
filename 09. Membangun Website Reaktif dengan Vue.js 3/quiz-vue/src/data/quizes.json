@@ -36,6 +36,133 @@
           { "id": 2, "label": "B", "text": "Python", "correct": true },
           { "id": 3, "label": "C", "text": "JavaScript", "correct": false }
         ]
+      },
+      {
+        "id": 3,
+        "text": "What is the main purpose of CSS in web development?",
+        "answers": [
+          {
+            "id": 1,
+            "label": "A",
+            "text": "To structure web content",
+            "correct": false
+          },
+          {
+            "id": 2,
+            "label": "B",
+            "text": "To style web content",
+            "correct": true
+          },
+          {
+            "id": 3,
+            "label": "C",
+            "text": "To add interactivity to web content",
+            "correct": false
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "text": "Which of the following is a version control system?",
+        "answers": [
+          { "id": 1, "label": "A", "text": "Git", "correct": true },
+          { "id": 2, "label": "B", "text": "Docker", "correct": false },
+          { "id": 3, "label": "C", "text": "Webpack", "correct": false }
+        ]
+      },
+      {
+        "id": 5,
+        "text": "What is the correct way to declare a JavaScript variable?",
+        "answers": [
+          { "id": 1, "label": "A", "text": "var myVar;", "correct": true },
+          {
+            "id": 2,
+            "label": "B",
+            "text": "variable myVar;",
+            "correct": false
+          },
+          {
+            "id": 3,
+            "label": "C",
+            "text": "let variable = myVar;",
+            "correct": false
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "text": "Which company developed the React library?",
+        "answers": [
+          { "id": 1, "label": "A", "text": "Google", "correct": false },
+          { "id": 2, "label": "B", "text": "Facebook", "correct": true },
+          { "id": 3, "label": "C", "text": "Microsoft", "correct": false }
+        ]
+      },
+      {
+        "id": 7,
+        "text": "What does SQL stand for?",
+        "answers": [
+          {
+            "id": 1,
+            "label": "A",
+            "text": "Structured Query Language",
+            "correct": true
+          },
+          {
+            "id": 2,
+            "label": "B",
+            "text": "Sequential Query Language",
+            "correct": false
+          },
+          {
+            "id": 3,
+            "label": "C",
+            "text": "Standard Query Language",
+            "correct": false
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "text": "Which HTML element is used for the largest heading?",
+        "answers": [
+          { "id": 1, "label": "A", "text": "<h1>", "correct": true },
+          { "id": 2, "label": "B", "text": "<h6>", "correct": false },
+          { "id": 3, "label": "C", "text": "<header>", "correct": false }
+        ]
+      },
+      {
+        "id": 9,
+        "text": "What is the correct syntax for a function in JavaScript?",
+        "answers": [
+          {
+            "id": 1,
+            "label": "A",
+            "text": "function myFunction()",
+            "correct": true
+          },
+          {
+            "id": 2,
+            "label": "B",
+            "text": "def myFunction()",
+            "correct": false
+          },
+          {
+            "id": 3,
+            "label": "C",
+            "text": "create myFunction()",
+            "correct": false
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "text": "Which protocol is used to secure communication on the web?",
+        "answers": [
+          { "id": 1, "label": "A", "text": "HTTP", "correct": false },
+          { "id": 2, "label": "B", "text": "FTP", "correct": false },
+          { "id": 3, "label": "C", "text": "HTTPS", "correct": true }
+        ]
       }
     ]
   },

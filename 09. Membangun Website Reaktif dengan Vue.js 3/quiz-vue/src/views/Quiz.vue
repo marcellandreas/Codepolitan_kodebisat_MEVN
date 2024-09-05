@@ -19,6 +19,10 @@ const questionPage = computed(() => {
   return `${currentQuestionIndex.value + 1} / ${quiz.questions.length}`;
 });
 
+const barPercentage = computed(() => {
+  return `${((currentQuestionIndex.value + 1) / quiz.questions.length) * 100}%`;
+});
+
 // dengan menggunakan watch
 // const questionPage = ref(
 //   `${currentQuestionIndex.value + 1} / ${quiz.questions.length}`
@@ -35,7 +39,7 @@ const questionPage = computed(() => {
 </script>
 
 <template>
-  <QuizHeader :questionPage="questionPage" />
+  <QuizHeader :questionPage="questionPage" :barPercentage="barPercentage" />
   <QuizContent :question="quiz.questions[currentQuestionIndex]" />
   <button
     @click="currentQuestionIndex++"
