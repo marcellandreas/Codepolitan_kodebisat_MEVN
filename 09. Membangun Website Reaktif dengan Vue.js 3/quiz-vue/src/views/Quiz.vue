@@ -1,3 +1,105 @@
 <template>
-  <h1>Quiz Page</h1>
+  <header>
+    <h4>Questions 1/2</h4>
+    <div class="bar">
+      <div class="bar-progress"></div>
+    </div>
+  </header>
+  <section id="question-container">
+    <h1 class="question-title">What 1 + 1</h1>
+  </section>
+  <section id="options-container">
+    <div class="option">
+      <p class="option-label">a</p>
+      <div class="option-value">1</div>
+    </div>
+    <div class="option">
+      <p class="option-label">a</p>
+      <div class="option-value">1</div>
+    </div>
+    <div class="option">
+      <p class="option-label">a</p>
+      <div class="option-value">1</div>
+    </div>
+  </section>
 </template>
+
+<style scoped>
+header {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h4 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.bar {
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #e0e0e0;
+  margin-top: 10px;
+}
+
+.bar-progress {
+  height: 100%;
+  width: 50%;
+  background-color: #adf7b6;
+  transition: width 0.5s ease;
+}
+
+#question-container {
+  margin-top: 20px;
+}
+
+.question-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.option:hover {
+  background-color: #f5f5f5;
+}
+
+.option-label {
+  font-size: 18px;
+  font-weight: bold;
+  width: 40px;
+  height: 40px;
+  background-color: rgb(151, 136, 136);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.option-value {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 0 10px;
+  background-color: rgb(158, 80, 80);
+  color: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 40px;
+}
+</style>
