@@ -1,12 +1,16 @@
 <script setup>
-import { useRoute, RouterView } from "vue-router";
+import { useRoute, RouterView, useRouter } from "vue-router";
 import products from "../data/products.json";
 
-const router = useRoute();
+const route = useRoute();
+const router = useRouter();
+const productId = parseInt(route.params.ids);
 
-const product = products.find(
-  (product) => product.id === parseInt(router.params.ids)
-);
+const product = products.find((product) => product.id === productId);
+
+const showOnwer = () => {
+  router.push({ name: "owner", params: { id: productId } });
+};
 </script>
 
 <template>
@@ -20,6 +24,7 @@ const product = products.find(
     <div v-else>
       <p>Product not found.</p>
     </div>
+    <button @click="showOnwer">Show Onwer</button>
     <RouterView />
   </main>
 </template>
