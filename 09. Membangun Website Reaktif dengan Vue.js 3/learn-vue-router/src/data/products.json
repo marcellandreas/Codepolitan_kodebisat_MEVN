@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Smartphone Galaxy S21",
+    "price": 999.99,
+    "year": 2021
+  },
+  {
+    "id": 2,
+    "name": "Laptop MacBook Air M1",
+    "price": 1199.99,
+    "year": 2021
+  },
+  {
+    "id": 3,
+    "name": "Smartwatch Apple Watch Series 7",
+    "price": 399.99,
+    "year": 2022
+  },
+  {
+    "id": 4,
+    "name": "Tablet iPad Pro 12.9",
+    "price": 1099.99,
+    "year": 2022
+  },
+  {
+    "id": 5,
+    "name": "Gaming Console PlayStation 5",
+    "price": 499.99,
+    "year": 2020
+  },
+  {
+    "id": 6,
+    "name": "Wireless Earbuds Sony WF-1000XM4",
+    "price": 279.99,
+    "year": 2021
+  },
+  {
+    "id": 7,
+    "name": "4K TV LG OLED CX",
+    "price": 1499.99,
+    "year": 2020
+  },
+  {
+    "id": 8,
+    "name": "Bluetooth Speaker JBL Charge 5",
+    "price": 179.99,
+    "year": 2021
+  },
+  {
+    "id": 9,
+    "name": "Digital Camera Canon EOS R5",
+    "price": 3899.99,
+    "year": 2020
+  },
+  {
+    "id": 10,
+    "name": "Gaming Laptop ASUS ROG Zephyrus G14",
+    "price": 1449.99,
+    "year": 2022
+  }
+]
