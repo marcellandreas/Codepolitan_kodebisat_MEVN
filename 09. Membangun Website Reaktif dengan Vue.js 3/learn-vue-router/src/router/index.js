@@ -10,6 +10,10 @@ const router = createRouter({
       component: () => import("../views/Home.vue"),
     },
     {
+      path: "/home",
+      redirect: "/",
+    },
+    {
       path: "/products/:ids",
       name: "products",
       component: () => import("../views/Products.vue"),
