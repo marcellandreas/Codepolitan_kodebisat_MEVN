@@ -8,3 +8,7 @@
 | Jumlah data yang dikirim terbatas                                                  | Dapat mengirimkan data dengan ukuran yang lebih besar            |
 | Tidak aman untuk mengirim data sensitif                                            | Lebih aman untuk mengirim data sensitif                          |
 | Biasanya digunakan untuk mengambil data dari server (misalnya menampilkan halaman) | Biasanya digunakan untuk membuat atau memperbarui data di server |
+
+### REST (Representational State Transfer)
+
+sebuah arsitektur sistem terdistribusi sederhananya adalah panduan komunikasi data untuk CRUD antara clint dan server
