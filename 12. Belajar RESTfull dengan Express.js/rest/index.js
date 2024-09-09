@@ -39,6 +39,17 @@ app.get("/comments", (req, res) => {
   res.render("comments/index", { comments });
 });
 
+app.get("/comments/create", (req, res) => {
+  res.render("comments/create", { comments });
+});
+
+app.post("/comments", (req, res) => {
+  const { username, text } = req.body;
+  // comments.push({ ...comment });
+  comments.push({ username, text });
+  res.send("it's works");
+});
+
 app.get("/order", (req, res) => {
   res.send("ini adalah request header response");
 });
