@@ -63,6 +63,16 @@ app.get("/comments/:id", (req, res) => {
   res.render("comments/show", { comment });
 });
 
+app.patch("/comments/:id", (req, res) => {
+  const { id } = req.params;
+  const newComment = req.body.text;
+  const foundComment = comments.find((c) => c.id === id);
+  foundComment.text = newComment;
+  console.log(newComment);
+  console.log(foundComment);
+  res.redirect("/comments");
+});
+
 app.get("/order", (req, res) => {
   res.send("ini adalah request header response");
 });
