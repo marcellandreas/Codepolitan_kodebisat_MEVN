@@ -6,14 +6,14 @@
 
 MongoDB adalah database berbasis dokumen, di mana data disimpan dalam bentuk dokumen yang fleksibel. Struktur data dalam dokumen tersebut bisa diatur secara bebas sesuai kebutuhan, sehingga memudahkan dalam pengembangan dan integrasi dengan kode.
 
-### Mengapa Perlu Menggunakan Database?
+## Mengapa Perlu Menggunakan Database?
 
 1. Menyimpan data dalam jumlah besar secara efisien.
 2. Memiliki fungsi query untuk membuat, mengelola, dan mengambil data.
 3. Menyediakan fitur keamanan dan akses kembali ke data.
 4. Skalabilitas yang baik untuk menampung data dalam jumlah besar.
 
-### SQL vs NoSQL
+## SQL vs NoSQL
 
 1. **SQL (Structured Query Language)**
 
@@ -24,7 +24,7 @@ MongoDB adalah database berbasis dokumen, di mana data disimpan dalam bentuk dok
    - Tidak menggunakan SQL sebagai bahasa query.
    - Memiliki berbagai jenis seperti dokumen, key-value, dan graph store.
 
-### Perbedaan antara SQL (Relasional) dan NoSQL (Non-Relasional)
+## Perbedaan antara SQL (Relasional) dan NoSQL (Non-Relasional)
 
 1. **Struktur Data**
 
@@ -65,7 +65,7 @@ MongoDB adalah database berbasis dokumen, di mana data disimpan dalam bentuk dok
 
 **BSON** (Binary JSON) adalah format biner yang digunakan oleh MongoDB untuk menyimpan dokumen. BSON merupakan singkatan dari **Binary JSON** dan dirancang untuk menjadi representasi efisien dari data dalam format JSON (JavaScript Object Notation) dengan beberapa keunggulan tambahan.
 
-### Poin Penting Mengenai BSON
+## Poin Penting Mengenai BSON
 
 #### 1. Struktur Mirip JSON
 
