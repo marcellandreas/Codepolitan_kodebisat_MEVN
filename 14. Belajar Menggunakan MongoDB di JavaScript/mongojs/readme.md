@@ -59,3 +59,35 @@ console.log(movie);
 ```
 
 buat nge-print data film yang baru kita buat tadi ke layar`.
+
+###
+
+```javascript
+Movie.find({ year: { $gt: 2018 } })
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+```
+
+```javascript
+Movie.find({ year: { $gt: 2018 }, genre: "Drama" })
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+```
+
+```javascript
+Movie.findOne({ _id: "66e27d2d19db492fb7e705e4" })
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+```

@@ -24,43 +24,69 @@ const Movie = mongoose.model("Movie", movieSchema);
 //   director: "Catherina Vallencia",
 // });
 
-Movie.insertMany([
-  {
-    title: "Avengers: Infinity War",
-    genre: "Action",
-    director: "Anthony Russo, Joe Russo",
-    year: 2018,
-    rating: 8.4,
-  },
-  {
-    title: "222",
-    genre: "Action",
-    director: "Anthony Russo, Joe Russo",
-    year: 2018,
-    rating: 8.4,
-  },
-  {
-    title: "Joker",
-    genre: "Crime",
-    director: "Todd Phillips",
-    year: 2019,
-    rating: 8.4,
-  },
-  {
-    title: "Parasite",
-    genre: "Drama",
-    director: "Bong Joon Ho ",
-    year: 2019,
-    rating: 8.6,
-  },
-  {
-    title: "Spider-Man: Into the Spider-Verse",
-    genre: "Animation",
-    director: "Bob Persichetti, Peter Ramsey, Rodney Rothman",
-    year: 2018,
-    rating: 8.4,
-  },
-])
+// Movie.insertMany([
+//   {
+//     title: "Avengers: Infinity War",
+//     genre: "Action",
+//     director: "Anthony Russo, Joe Russo",
+//     year: 2018,
+//     rating: 8.4,
+//   },
+//   {
+//     title: "222",
+//     genre: "Action",
+//     director: "Anthony Russo, Joe Russo",
+//     year: 2018,
+//     rating: 8.4,
+//   },
+//   {
+//     title: "Joker",
+//     genre: "Crime",
+//     director: "Todd Phillips",
+//     year: 2019,
+//     rating: 8.4,
+//   },
+//   {
+//     title: "Parasite",
+//     genre: "Drama",
+//     director: "Bong Joon Ho ",
+//     year: 2019,
+//     rating: 8.6,
+//   },
+//   {
+//     title: "Spider-Man: Into the Spider-Verse",
+//     genre: "Animation",
+//     director: "Bob Persichetti, Peter Ramsey, Rodney Rothman",
+//     year: 2018,
+//     rating: 8.4,
+//   },
+// ])
+//   .then((result) => {
+//     console.log(result);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+
+// Movie.find({ year: { $gt: 2018 }, genre: "Drama" })
+//   .then((result) => {
+//     console.log(result);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+
+// find by id
+
+// Movie.findOne({ _id: "66e27d2d19db492fb7e705e4" })
+//   .then((result) => {
+//     console.log(result);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+
+Movie.findById("66e27d2d19db492fb7e705e4")
   .then((result) => {
     console.log(result);
   })
