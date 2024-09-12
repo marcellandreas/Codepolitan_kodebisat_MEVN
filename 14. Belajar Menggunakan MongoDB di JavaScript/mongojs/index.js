@@ -111,17 +111,36 @@ const Movie = mongoose.model("Movie", movieSchema);
 //     console.log(err);
 //   });
 
-Movie.findByIdAndUpdate(
-  "66e27d60288eb747fecf7cf5",
-  { title: "Joker 22" },
-  { new: true }
-)
-  .then((res) => {
-    console.log(res);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+// Movie.findByIdAndUpdate(
+//   "66e27d60288eb747fecf7cf5",
+//   { title: "Joker 22" },
+//   { new: true }
+// )
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+
+// MOvie delete
+
+// Movie.deleteOne({ title: "Avengers: Infinity War" })
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+
+// Movie.findByIdAndDelete("66e27d2e19db492fb7e705e6")
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+
 // movie.save();
 
 // console.log(movie);

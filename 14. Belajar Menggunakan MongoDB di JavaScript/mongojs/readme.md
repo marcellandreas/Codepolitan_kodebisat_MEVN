@@ -91,3 +91,35 @@ Movie.findOne({ _id: "66e27d2d19db492fb7e705e4" })
     console.log(err);
   });
 ```
+
+## delete SYNSTAX
+
+```javascript
+Movie.deleteOne({ title: "Avengers: Infinity War" })
+  .then((res) => {
+    console.log(res);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+```
+
+```javascript
+Movie.deleteMany({ title: "Avengers: Infinity War" })
+  .then((res) => {
+    console.log(res);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+```
+
+```javascript
+Movie.findByIdAndDelete("66e27d2e19db492fb7e705e6")
+  .then((res) => {
+    console.log(res);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+```
