@@ -17,13 +17,57 @@ const movieSchema = new mongoose.Schema({
 
 const Movie = mongoose.model("Movie", movieSchema);
 
-const movie = new Movie({
-  title: "kisah online",
-  year: 2025,
-  score: 9.8,
-  director: "Catherina Vallencia",
-});
+// const movie = new Movie({
+//   title: "kisah online",
+//   year: 2025,
+//   score: 9.8,
+//   director: "Catherina Vallencia",
+// });
 
-movie.save();
+Movie.insertMany([
+  {
+    title: "Avengers: Infinity War",
+    genre: "Action",
+    director: "Anthony Russo, Joe Russo",
+    year: 2018,
+    rating: 8.4,
+  },
+  {
+    title: "222",
+    genre: "Action",
+    director: "Anthony Russo, Joe Russo",
+    year: 2018,
+    rating: 8.4,
+  },
+  {
+    title: "Joker",
+    genre: "Crime",
+    director: "Todd Phillips",
+    year: 2019,
+    rating: 8.4,
+  },
+  {
+    title: "Parasite",
+    genre: "Drama",
+    director: "Bong Joon Ho ",
+    year: 2019,
+    rating: 8.6,
+  },
+  {
+    title: "Spider-Man: Into the Spider-Verse",
+    genre: "Animation",
+    director: "Bob Persichetti, Peter Ramsey, Rodney Rothman",
+    year: 2018,
+    rating: 8.4,
+  },
+])
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
-console.log(movie);
+// movie.save();
+
+// console.log(movie);
