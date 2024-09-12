@@ -1,13 +1,20 @@
-const mongoose = require("mongoose");
-mongoose
-  .connect("mongodb://127.0.0.1:27017/ShopApp")
-  .then(() => {
-    console.log("terkoneksi dengan mongoDB");
-  })
-  .catch((err) => {
-    console.log("belum terkoneksi dengan mongoDB", err);
-  });
+# Mengenai Schema
 
+`schema` adalah struktur yang mendefinisikan bentuk dari dokumen yang akan disimpan di dalam koleksi `MongoDB`
+
+## Tipe Data yang Didukung dalam Mongoose Schema
+
+Beberapa tipe data yang umum digunakan di Mongoose Schema:
+
+- **String**: Untuk data teks.
+- **Number:** Untuk data numerik.
+- **Date**: Untuk data tanggal dan waktu.
+- **Boolean**: Untuk nilai `true` atau `false`.
+- **Array**: Untuk menyimpan beberapa nilai dalam satu field.
+- **ObjectId**: Untuk mereferensikan dokumen lain di dalam MongoDB.
+- **Mixed**: Untuk tipe data yang dapat berupa apa saja (tidak ditentukan secara khusus).
+
+```javascript
 const productSchema = mongoose.Schema({
   name: {
     type: String,
@@ -60,16 +67,4 @@ const productSchema = mongoose.Schema({
     },
   },
 });
-
-const Product = mongoose.model("Product", productSchema);
-
-const tShirt = new Product({ name: "baju partai", price: 0 });
-
-tShirt
-  .save()
-  .then((res) => {
-    console.log(res);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+```
