@@ -68,6 +68,14 @@ productSchema.methods.outStock = function () {
   return this.save();
 };
 
+productSchema.statics.closeStore = function () {
+  return this.updateMany({
+    stock: 0,
+    "availability.online": false,
+    "availability.offline": false,
+  });
+};
+
 const Product = mongoose.model("Product", productSchema);
 
 const changeStock = async (id) => {
@@ -76,7 +84,15 @@ const changeStock = async (id) => {
   console.log("berhasil diubah");
 };
 
-changeStock("66e2e524c5590d7afc98b85d");
+Product.closeStore()
+  .then((res) => {
+    console.log(res);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+// changeStock("66e2e524c5590d7afc98b85d");
 
 Product.findOneAndUpdate(
   { name: "Kemeja Flanel" },
