@@ -61,7 +61,22 @@ const productSchema = mongoose.Schema({
   },
 });
 
+productSchema.methods.outStock = function () {
+  this.stock = 0;
+  this.availability.online = false;
+  this.availability.offline = false;
+  return this.save();
+};
+
 const Product = mongoose.model("Product", productSchema);
+
+const changeStock = async (id) => {
+  const foundProduct = await Product.findById(id);
+  await foundProduct.outStock();
+  console.log("berhasil diubah");
+};
+
+changeStock("66e2e524c5590d7afc98b85d");
 
 Product.findOneAndUpdate(
   { name: "Kemeja Flanel" },
