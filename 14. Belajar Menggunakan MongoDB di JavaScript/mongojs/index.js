@@ -86,14 +86,42 @@ const Movie = mongoose.model("Movie", movieSchema);
 //     console.log(err);
 //   });
 
-Movie.findById("66e27d2d19db492fb7e705e4")
-  .then((result) => {
-    console.log(result);
+// Movie.findById("66e27d2d19db492fb7e705e4")
+//   .then((result) => {
+//     console.log(result);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+
+// update one
+// Movie.updateMany({ title: "Parasite" }, { year: 2025 })
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+
+// Movie.updateMany({ year: { $lt: 2019 } }, { year: 2025 })
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+
+Movie.findByIdAndUpdate(
+  "66e27d60288eb747fecf7cf5",
+  { title: "Joker 22" },
+  { new: true }
+)
+  .then((res) => {
+    console.log(res);
   })
   .catch((err) => {
     console.log(err);
   });
-
 // movie.save();
 
 // console.log(movie);
