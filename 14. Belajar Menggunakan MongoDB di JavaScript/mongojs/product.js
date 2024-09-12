@@ -63,13 +63,52 @@ const productSchema = mongoose.Schema({
 
 const Product = mongoose.model("Product", productSchema);
 
-const tShirt = new Product({ name: "baju partai", price: 0 });
-
-tShirt
-  .save()
-  .then((res) => {
-    console.log(res);
+Product.findOneAndUpdate(
+  { name: "Kemeja Flanel" },
+  {
+    name: "Kemeja Flanel",
+    brand: "Hollister",
+    price: 1750000,
+    color: "biru muda",
+    size: ["S", "M", "L"],
+    description:
+      "Kemeja flanel dengan warna yang cerah, terbuat dari bahan flanel yang nyaman dan berkualitas tinggi.",
+    condition: "baru",
+    stock: 25,
+    availability: {
+      online: true,
+      offline: true,
+    },
+  },
+  { new: true, runValidators: true }
+)
+  .then((result) => {
+    console.log(result);
   })
   .catch((err) => {
     console.log(err);
   });
+// const tShirt = new Product({
+//   name: "Kemeja Flanel",
+//   brand: "Hollister",
+//   price: 750000,
+//   color: "biru muda",
+//   size: ["S", "M", "L"],
+//   description:
+//     "Kemeja flanel dengan warna yang cerah, terbuat dari bahan flanel yang nyaman dan berkualitas tinggi.",
+//   condition: "baru",
+//   stock: 25,
+//   availability: {
+//     online: true,
+//     offline: true,
+//   },
+// });
+
+// tShirt
+//   .save()
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
