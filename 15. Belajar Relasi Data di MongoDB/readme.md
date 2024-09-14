@@ -1,0 +1,1 @@
+> `relationship` dalam konteks database itu berarti bagaimana data dihubungkan satu sama lain. Misalnya, di dunia nyata ada hubungan antara pelanggan dengan pesanan yang mereka buat. Nah, di database, hubungan semacam ini kita representasikan dengan cara menghubungkan data dari satu tabel atau koleksi ke tabel atau koleksi lainnya.
