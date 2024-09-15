@@ -24,7 +24,7 @@ const farmSchema = new mongoose.Schema({
   products: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "product",
+      ref: "Product",
     },
   ],
 });
@@ -64,13 +64,31 @@ const Farm = mongoose.model("Farm", farmSchema);
 
 // makeFarm();
 
-const addProduct = async (id) => {
-  const farm = await Farm.findById(id);
-  const Watermellon = await Product.findOne({ name: "Watermellon" });
-  farm.products.push(Watermellon);
-  await farm.save();
+// const addProduct = async (id) => {
+//   const farm = await Farm.findById(id);
+//   const Watermellon = await Product.findOne({ name: "Watermellon" });
+//   farm.products.push(Watermellon);
+//   await farm.save();
 
-  console.log(farm);
-};
+//   console.log(farm);
+// };
 
-addProduct("66e70525124f41a42bd65956");
+// addProduct("66e70812f80558f4574e49af");
+
+// Farm.findOne({ name: "farm" })
+//   .populate("products")
+//   .then((farm) => {
+//     console.log(farm);
+//     for (const product of farm.products) {
+//       console.log(product.name);
+//     }
+//   });
+
+Farm.findOne({ name: "farm" })
+  .populate("products", "name")
+  .then((farm) => {
+    console.log(farm);
+    for (const product of farm.products) {
+      console.log(product.name);
+    }
+  });
