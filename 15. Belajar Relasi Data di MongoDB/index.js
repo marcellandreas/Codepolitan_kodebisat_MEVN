@@ -23,6 +23,7 @@ userSchema = new mongoose.Schema({
 
 const User = mongoose.model("user", userSchema);
 
+// Relasi Data One To Few
 // const makeUser = async () => {
 //   const user = new User({
 //     name: "JOhn Doe",
@@ -41,15 +42,15 @@ const User = mongoose.model("user", userSchema);
 
 // makeUser();
 
-const addAddress = async (id) => {
-  const user = await User.findById(id);
-  user.addresses.push({
-    street: "Jalan Sudirman",
-    city: "Surabaya",
-    country: "Indonesia",
-  });
+// const addAddress = async (id) => {
+//   const user = await User.findById(id);
+//   user.addresses.push({
+//     street: "Jalan Sudirman",
+//     city: "Surabaya",
+//     country: "Indonesia",
+//   });
 
-  return await user.save();
-};
+//   return await user.save();
+// };
 
-addAddress("66e5c1d63075c4ddda7b3fd1");
+// addAddress("66e5c1d63075c4ddda7b3fd1");
