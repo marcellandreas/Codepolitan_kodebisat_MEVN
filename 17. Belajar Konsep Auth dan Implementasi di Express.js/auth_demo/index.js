@@ -28,6 +28,13 @@ app.use(
   })
 );
 
+const auth = (req, res, next) => {
+  if (!req.session.user_id) {
+    return res.redirect("/login");
+  }
+  next();
+};
+
 app.get("/", (req, res) => {
   res.send("Homepage");
 });
@@ -38,18 +45,10 @@ app.get("/login", (req, res) => {
 
 app.post("/login", async (req, res) => {
   const { username, password } = req.body;
-  const user = await User.findOne({
-    username, // username itu unik
-  });
+  const user = await User.findByCredentials(username, password);
   if (user) {
-    const isMath = await bcrypt.compare(password, user.password);
-
-    if (isMath) {
-      req.session.user_id = user._id;
-      res.redirect("/admin");
-    } else if (isMath) {
-      res.redirect("/login");
-    }
+    req.session.user_id = user._id;
+    res.redirect("/admin");
   } else {
     res.redirect("/login");
   }
@@ -61,30 +60,33 @@ app.get("/register", (req, res) => {
 
 app.post("/register", async (req, res) => {
   const { username, password } = req.body;
-  const hastedPassword = bcrypt.hashSync(password, 10);
+  //   const hastedPassword = bcrypt.hashSync(password, 10);
 
-  const user = new User({
-    username,
-    password: hastedPassword,
-  });
+  //   const user = new User({
+  //     username,
+  //     password: hastedPassword,
+  //   });
+  const user = new User({ username, password });
   await user.save();
+  req.session.user_id = user._id;
   res.redirect("/");
   //   res.send(req.body);
 });
 
-app.post("/logout", (req, res) => {
+app.post("/logout", auth, (req, res) => {
   //   req.session.user_id = null;
   req.session.destroy(() => {
     res.redirect("/login");
   });
 });
 
-app.get("/admin", (req, res) => {
-  if (!req.session.user_id) {
-    res.redirect("/login");
-  }
+app.get("/admin", auth, (req, res) => {
   //   res.send("Halaman Admin hanya bisa diakses ketika user adalah admin");
   res.render("admin");
+});
+
+app.get("/profile/settings", auth, (req, res) => {
+  res.send("Profile Settings: " + req.session.user_id);
 });
 
 app.listen(3000, () => {
