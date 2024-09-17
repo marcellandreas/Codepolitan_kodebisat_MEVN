@@ -1,10 +1,10 @@
-<script setup></script>
+<script setup>
+import Navbar from "./components/Navbar.vue";
+</script>
 
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link :to="{ name: 'product' }">Product</router-link>
-    </div>
+    <Navbar />
     <router-view />
   </div>
 </template>
@@ -13,6 +13,8 @@
 * {
   box-sizing: border-box;
   font-family: Arial;
+  margin: 0;
+  padding: 0;
 }
 
 #page-wrap {
