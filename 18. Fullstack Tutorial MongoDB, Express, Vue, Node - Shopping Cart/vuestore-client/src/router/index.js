@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import product from "../views/product/Index.vue";
 import productdetail from "../views/product/Detail.vue";
 import cart from "../views/cart/Index.vue";
+import NotFound from "../views/errors/404.vue";
 
 const routes = [
   {
@@ -19,6 +20,11 @@ const routes = [
     path: "/cart",
     name: "cart",
     component: cart,
+  },
+  {
+    path: "/:catchall(.*)*",
+    name: "404",
+    component: NotFound,
   },
 ];
 
