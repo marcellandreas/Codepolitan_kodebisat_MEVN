@@ -1,7 +1,12 @@
 <template>
   <nav id="nav-bar">
     <div id="logo">MyBrand</div>
-    <div id="nav-links">
+    <div id="toggle-button" @click="toggleMenu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div :class="['nav-links', { active: menuActive }]">
       <router-link id="products-link" :to="{ name: 'product' }"
         >Product</router-link
       >
@@ -13,7 +18,18 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      menuActive: false, // untuk menandai apakah menu aktif atau tidak
+    };
+  },
+  methods: {
+    toggleMenu() {
+      this.menuActive = !this.menuActive; // Toggle menu
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -39,8 +55,25 @@ export default {};
   letter-spacing: 2px;
 }
 
+/* Toggle button styling (hamburger icon) */
+#toggle-button {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 24px;
+  cursor: pointer;
+}
+
+#toggle-button span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #ecf0f1;
+}
+
 /* Navigation links container */
-#nav-links {
+.nav-links {
   display: flex;
   gap: 24px;
   align-items: center;
@@ -48,7 +81,7 @@ export default {};
 }
 
 /* Link styles */
-#nav-links a {
+.nav-links a {
   color: #ecf0f1;
   font-size: 18px;
   font-weight: 500;
@@ -56,7 +89,7 @@ export default {};
   transition: color 0.3s ease;
 }
 
-#nav-links a:hover {
+.nav-links a:hover {
   background-color: #41b883;
   border: none;
   border-radius: 8px;
@@ -93,17 +126,36 @@ button:hover {
 }
 
 /* Responsive Design */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   #nav-bar {
-    flex-direction: column;
-    align-items: center;
-    padding: 16px;
+    padding: 0 16px;
   }
 
-  #nav-links {
-    margin-top: 16px;
+  #toggle-button {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 75px;
+    right: 0;
+    background-color: #34495e;
     flex-direction: column;
-    gap: 16px;
+    align-items: flex-start;
+    width: 100%;
+    padding: 16px;
+    display: none; /* Awalnya disembunyikan */
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links a {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: left;
   }
 
   button {

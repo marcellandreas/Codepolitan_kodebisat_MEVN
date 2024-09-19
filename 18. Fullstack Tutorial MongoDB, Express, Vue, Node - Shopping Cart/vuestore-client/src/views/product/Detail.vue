@@ -1,13 +1,19 @@
 <template>
   <div id="page-wrap" v-if="product">
+    <h4 v-if="notif" class="notif">Item added succesfully</h4>
     <div id="img-wrap">
-      <img :src="product.imageUrl" :alt="product.name" />
+      <img
+        :src="`http://localhost:8000${product.imageUrl}`"
+        :alt="product.name"
+      />
     </div>
     <div id="product-details">
       <h1>{{ product.name }}</h1>
       <h3 id="price">Rp. {{ product.price }}</h3>
       <p class="rating">⭐ {{ product.averageRating }}</p>
-      <button id="add-to-cart">Add to Cart</button>
+      <button id="add-to-cart" @click="addToCart(product.code)">
+        Add to Cart
+      </button>
       <p class="description">
         {{ product.description }}
       </p>
@@ -17,7 +23,8 @@
 </template>
 
 <script>
-import { products } from "../../data-seed";
+// import { products } from "../../data-seed";
+import axios from "axios";
 import NotFound from "../errors/404.vue";
 
 export default {
@@ -25,19 +32,25 @@ export default {
 
   data() {
     return {
-      products,
+      product: {},
+      notif: false,
     };
   },
-
-  computed: {
-    product() {
-      return this.products.find((p) => {
-        return p.id === this.$route.params.id;
+  methods: {
+    async addToCart(product) {
+      await axios.post("http://localhost:8000/api/orders/update/user/1", {
+        product: product,
       });
+      this.notif = true;
     },
   },
-  mounted() {
-    console.log(this.products);
+
+  async created() {
+    const code = this.$route.params.id;
+    const result = await axios.get(
+      `http://localhost:8000/api/products/${code}`
+    );
+    this.product = result.data;
   },
 };
 </script>
@@ -131,6 +144,14 @@ h1 {
 
 #add-to-cart:hover {
   background-color: #2ecc71;
+}
+
+.notif {
+  text-align: center;
+  color: white;
+  background: #2ecc71;
+  padding: 3%;
+  border-radius: 8px;
 }
 
 /* Responsive Design */

@@ -1,13 +1,19 @@
 <template>
   <div class="product-container">
-    <img :src="item.imageUrl" :alt="item.name" class="product-image" />
+    <img
+      :src="`http://localhost:8000${cartItem.imageUrl}`"
+      :alt="cartItem.name"
+      class="product-image"
+    />
 
     <div class="details-wrap">
-      <h3>{{ item.name }}</h3>
-      <p class="price">Rp. {{ item.price }}</p>
+      <h3>{{ cartItem.name }}</h3>
+      <p class="price">Rp. {{ cartItem.price }}</p>
     </div>
 
-    <button class="remove-button">Remove</button>
+    <button class="remove-button" @click="$emit('remove-item', cartItem.code)">
+      Remove
+    </button>
   </div>
 </template>
 

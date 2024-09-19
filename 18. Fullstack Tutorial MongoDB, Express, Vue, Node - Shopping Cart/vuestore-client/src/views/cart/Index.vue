@@ -5,6 +5,7 @@
       v-for="cartItem in cartItems"
       :key="cartItem.id"
       :cartItem="cartItem"
+      v-on:remove-item="removeFromCart($event)"
     />
     <div id="total-section">
       <div id="total-price">Total: Rp. {{ totalPrice }}</div>
@@ -14,20 +15,49 @@
 </template>
 
 <script>
-import { cartItems } from "../../data-seed";
+import axios from "axios";
 import ItemCart from "../../components/CartItem.vue";
 
 export default {
   components: { ItemCart },
   data() {
     return {
-      cartItems,
+      cartItems: [],
     };
   },
   computed: {
     totalPrice() {
       return this.cartItems.reduce((sum, item) => sum + Number(item.price), 0);
     },
+  },
+  methods: {
+    async removeFromCart(product) {
+      await axios.delete(
+        `http://localhost:8000/api/orders/delete/user/1/product/${product}`
+      );
+      let indexCart = this.cartItems
+        .map(function (item) {
+          return item.code;
+        })
+        .indexOf(product);
+      this.cartItems.splice(indexCart, 1);
+    },
+  },
+  async created() {
+    const result = await axios.get("http://localhost:8000/api/orders/user/1");
+    // let data = Object.assign({
+    //   ...result.data.map((result) => ({
+    //     cart_items: result.products,
+    //   })),
+    // });
+
+    let data = Object.assign(
+      {},
+      ...result.data.map((result) => ({
+        cart_items: result.products,
+      }))
+    );
+    this.cartItems = data.cart_items;
   },
 };
 </script>
