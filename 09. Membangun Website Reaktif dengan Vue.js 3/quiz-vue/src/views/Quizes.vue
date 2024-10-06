@@ -11,28 +11,38 @@ const search = ref("");
 
 watch(search, () => {
   quizes.value = srcQuiz.filter((quiz) => {
-    return quiz.title.toLowerCase().includes(search.value.toLocaleLowerCase());
+    return quiz.title.toLowerCase().includes(search.value.toLowerCase());
   });
 });
 </script>
 
 <template>
-  <header>
-    <h1 id="title">Quiz</h1>
-    <input v-model.trim="search" type="text" id="search-input" />
-  </header>
+  <div>
+    <header>
+      <h1 id="title">Quiz</h1>
+      <input
+        v-model.trim="search"
+        type="text"
+        id="search-input"
+        placeholder="Search for quizzes..."
+      />
+    </header>
 
-  <p v-if="quizes.length == 0">Data tidak ada</p>
-  <section id="quiz-container">
-    <!-- <div v-for="quiz in quizes" :key="quiz.id" class="card">
-        <img :src="quiz.img" :alt="quiz.title" />
-        <div class="card-body">
-          <h2 class="card-title">{{ quiz.title }}</h2>
-          <p>{{ quiz.questions.length }} questions</p>
-        </div>
-      </div> -->
-    <QuizCard v-for="quiz in quizes" :key="quiz.id" :quiz="quiz" />
-  </section>
+    <div v-if="quizes.length === 0" class="no-data">
+      <img
+        src="../assets/no-results.svg"
+        alt="No Results"
+        class="no-data-image"
+      />
+      <p class="no-data-text">
+        We couldn't find any quizzes that match your search.
+      </p>
+    </div>
+
+    <section id="quiz-container">
+      <QuizCard v-for="quiz in quizes" :key="quiz.id" :quiz="quiz" />
+    </section>
+  </div>
 </template>
 
 <style scoped>
@@ -53,6 +63,8 @@ header {
   background-color: #c9c9d8;
   padding: 10px;
   border-radius: 8px;
+  width: 100%;
+  max-width: 300px;
 }
 
 #quiz-container {
@@ -83,5 +95,22 @@ header {
 
 .card-body h2 {
   font-weight: bold;
+}
+
+.no-data {
+  text-align: center;
+  margin-top: 50px;
+  color: #b3b3b3;
+}
+
+.no-data-image {
+  width: 100px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.no-data-text {
+  font-size: 18px;
+  font-weight: 500;
 }
 </style>

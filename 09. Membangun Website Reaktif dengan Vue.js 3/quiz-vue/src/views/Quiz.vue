@@ -71,23 +71,25 @@ function onSelectOption(option) {
 </script>
 
 <template>
-  <QuizHeader :questionPage="questionPage" :barPercentage="barPercentage" />
-  <QuizContent
-    v-if="!showResult"
-    :question="quiz.questions[currentQuestionIndex]"
-    @selectOption="onSelectOption"
-  />
-  <QuizResult
-    v-else
-    :quizQuestionsLength="quiz.questions.length"
-    :numberOfCorrectAnswer="numberOfCorrectAnswer"
-  />
-  <!-- <button
+  <div>
+    <QuizHeader :questionPage="questionPage" :barPercentage="barPercentage" />
+    <QuizContent
+      v-if="!showResult"
+      :question="quiz.questions[currentQuestionIndex]"
+      @selectOption="onSelectOption"
+    />
+    <QuizResult
+      v-else
+      :quizQuestionsLength="quiz.questions.length"
+      :numberOfCorrectAnswer="numberOfCorrectAnswer"
+    />
+    <!-- <button
     @click="currentQuestionIndex++"
     :disabled="currentQuestionIndex === quiz.questions.length - 1"
   >
     Next
   </button> -->
+  </div>
 </template>
 
 <style scoped></style>
