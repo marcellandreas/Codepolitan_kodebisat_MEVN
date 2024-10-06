@@ -1,5 +1,7 @@
 <script setup>
 import { ref } from "vue";
+import Navbar from "./components/Navbar.vue";
+import Footer from "./components/Footer.vue";
 
 const showForm = ref(false);
 const isEditing = ref(false);
@@ -61,11 +63,12 @@ function deleteMemo(id) {
 
 <template>
   <main>
+    <Navbar @toggleForm="handleshowForm2" />
     <div class="container">
-      <header>
+      <!-- <header>
         <h1 class="header-title">Memos</h1>
         <button @click="handleshowForm2()" class="header-button">+</button>
-      </header>
+      </header> -->
       <p class="not-found-memos" v-if="memos.length === 0">
         Memos belum ada data
       </p>
@@ -94,6 +97,7 @@ function deleteMemo(id) {
         </div>
       </div>
     </div>
+    <Footer />
     <div v-if="showForm" class="form-overlay">
       <div class="form-modal">
         <button @click="handleshowForm2()" class="form-close-btn">
@@ -109,7 +113,16 @@ function deleteMemo(id) {
   </main>
 </template>
 
-<style scoped>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #141414;
+}
 main {
   height: 100%;
   width: 100%;
@@ -117,6 +130,8 @@ main {
 
 .container {
   max-width: 1000px;
+
+  min-height: 100vh;
   padding: 10px;
   margin: 0 auto;
 }
@@ -152,6 +167,7 @@ header {
 }
 
 .card-container {
+  margin-top: 60px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
@@ -259,15 +275,20 @@ header {
   color: red;
 }
 
+textarea {
+  padding: 10px;
+}
+
 .not-found-memos {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   border-radius: 8px;
-  border: 2px solid #0056b3;
+  /* border: 2px solid #0056b3; */
   height: 50vh;
   font-size: 20px;
   font-variant: small-caps;
+  color: white;
 }
 </style>
