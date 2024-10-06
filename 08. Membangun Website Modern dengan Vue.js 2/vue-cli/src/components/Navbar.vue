@@ -1,10 +1,10 @@
 <template>
   <nav
-    class="navbar navbar-light bg-primary navbar-expand-lg fixed-top shadow-sm"
+    class="navbar navbar-light bg-amazon-blue navbar-expand-lg fixed-top shadow-sm"
   >
     <div class="container">
       <a class="navbar-brand" href="#">
-        <p class="h2">my<span class="text-white">Store</span></p>
+        <p class="h2">my<span class="text-amazon-yellow">Store</span></p>
       </a>
 
       <button
@@ -23,7 +23,7 @@
         <div class="navbar-text ml-auto d-flex align-items-center">
           <button
             v-if="cart.length >= 0 && !isCheckoutPage"
-            class="btn btn-success btn-sm mr-2"
+            class="btn btn-amazon-yellow btn-sm mr-2"
             @click="$emit('toggle-slide')"
             title="Toggle View"
           >
@@ -32,7 +32,7 @@
 
           <div class="dropdown" v-if="cart.length > 0 && !isCheckoutPage">
             <button
-              class="btn btn-success btn-sm dropdown-toggle"
+              class="btn btn-amazon-yellow btn-sm dropdown-toggle"
               id="dropdownCart"
               data-toggle="dropdown"
               aria-haspopup="true"
@@ -56,7 +56,7 @@
                 >
                   <span>
                     <span
-                      class="badge badge-pill badge-warning align-text-top mr-1"
+                      class="badge badge-pill badge-secondary align-text-top mr-1"
                       >{{ item.qty }}</span
                     >
                     {{ item.product.name }}
@@ -74,7 +74,7 @@
                 <div class="dropdown-divider"></div>
               </div>
               <router-link
-                class="btn btn-sm btn-outline-info text-dark float-right"
+                class="btn btn-sm btn-outline-amazon-blue text-dark float-right"
                 to="/checkout"
                 >Go to Checkout
               </router-link>
@@ -110,10 +110,38 @@ export default {
 };
 </script>
 
-<style>
-.navbar-brand img {
-  height: 40px;
-  width: auto;
+<style scoped>
+/* Warna Amazon */
+.bg-amazon-blue {
+  background-color: #232f3e !important; /* Biru gelap Amazon */
+}
+
+.text-amazon-yellow {
+  color: #ff9900 !important; /* Kuning Amazon */
+}
+
+.btn-amazon-yellow {
+  background-color: #ff9900;
+  color: #ffffff;
+}
+
+.btn-amazon-yellow:hover {
+  background-color: #ffb84d;
+}
+
+.btn-outline-amazon-blue {
+  border-color: #232f3e;
+  color: #232f3e;
+}
+
+.btn-outline-amazon-blue:hover {
+  background-color: #232f3e;
+  color: #ffffff;
+}
+
+.navbar-brand p {
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
 }
 
 .navbar-toggler {
@@ -121,7 +149,7 @@ export default {
 }
 
 .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=UTF8,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba%288, 8, 8, 0.5%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml;charset=UTF8,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba%255, 255, 255, 0.5%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 .navbar-text .btn {

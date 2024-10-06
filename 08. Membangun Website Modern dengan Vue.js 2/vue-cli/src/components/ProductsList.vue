@@ -1,23 +1,23 @@
 <template>
   <div class="w-100 min-vh-100 row gap pt-5 m-auto">
     <div
-      class="col-12 col-sm-6 col-md-4 col-lg-3 card-why card bg-info p-0 m-0 position-relative"
+      class="col-12 col-sm-6 col-md-4 col-lg-3 card-why card bg-white shadow-sm p-0 m-0 position-relative"
       v-for="(item, index) in showItem"
       :key="item.id"
       :data-index="index"
     >
-      <div class="position-absolute button-plus-product">
-        <button class="btn btn-info" @click="$emit('add-item', item)">+</button>
-      </div>
       <div class="image-top">
-        <img :src="item.image" :alt="item.name" class="" />
+        <img :src="item.image" :alt="item.name" class="product-image" />
       </div>
-      <div class="card-body card-why position-relative">
-        <h3 class="text-dark text-body h-25">{{ item.name }}</h3>
-        <p class="mb-0">{{ item.description }}</p>
-        <div class="position-absolute h5 price-tag">
+      <div class="card-body position-relative">
+        <h3 class="text-dark product-name">{{ item.name }}</h3>
+        <p class="text-muted product-description">{{ item.description }}</p>
+        <div class="price-tag">
           <Pricee :value="Number(item.price)"></Pricee>
         </div>
+        <button class="btn btn-add-to-cart" @click="$emit('add-item', item)">
+          Add to Cart
+        </button>
       </div>
     </div>
   </div>
@@ -62,16 +62,7 @@ export default {
 };
 </script>
 
-<style>
-.bg-danger {
-  background-color: #dc3545;
-}
-
-p {
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
+<style scoped>
 .w-100 {
   width: 100%;
 }
@@ -81,64 +72,112 @@ p {
 }
 
 .gap {
-  gap: 8px;
+  gap: 16px;
   justify-content: center;
 }
 
 .card-why {
-  min-height: 300px !important;
   display: flex;
   flex-direction: column;
-  padding: 10px !important;
-  margin: 0 !important;
-  border-radius: 20px !important;
+  justify-content: space-between;
+  min-height: 400px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: white;
+  padding: 16px;
+  position: relative; /* Important for absolute positioning */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-why:hover {
+  transform: scale(1.05); /* Membesar sedikit */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Efek bayangan */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Menggeser dari bawah */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Kembali ke posisi semula */
+  }
+}
+
+.card-why {
+  animation: fadeIn 0.5s ease forwards; /* Menggunakan animasi fadeIn */
 }
 
 .image-top {
-  border-radius: 20px 20px 0 0;
-  min-height: 300px;
-  background: #fff;
-  background-size: cover;
-  background-position: center center;
-}
-
-.image-top img {
-  height: 100%;
   width: 100%;
-  border-radius: 20px 20px 0 0;
+  height: 200px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.button-plus-product {
-  right: 12px;
-  top: 12px;
-  position: absolute;
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
-.button-plus-product .btn {
-  border-radius: 0 16px 0 0 !important;
+
+.product-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 12px;
+  color: #333;
+}
+
+.product-description {
+  font-size: 14px;
+  color: #666;
+  margin: 8px 0;
+  display: -webkit-box; /* Untuk dukungan WebKit */
+  -webkit-box-orient: vertical; /* Orientasi kotak vertikal */
+  overflow: hidden; /* Sembunyikan overflow */
+  -webkit-line-clamp: 2; /* Batasi menjadi 2 baris */
+  text-overflow: ellipsis; /* Tampilkan ellipsis (...) */
 }
 
 .price-tag {
-  bottom: 12px;
-  padding: 4px;
-  right: 12px;
-  border-radius: 4px 4px 12px 4px;
-  background: white;
+  font-weight: bold;
+  color: #b12704;
+  margin-top: auto;
+}
+
+.btn-add-to-cart {
+  background-color: #ff9900;
+  color: white;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 14px;
+  border: none;
+  width: 100%;
+  position: absolute; /* Make the button stick to the bottom */
+  bottom: 0; /* Align it to the bottom of the card */
+  left: 0; /* Ensure full width */
+  right: 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-add-to-cart:hover {
+  background-color: #e68a00; /* Ganti warna saat hover */
+  transform: translateY(-3px); /* Menggeser sedikit ke atas */
 }
 
 @media (max-width: 768px) {
   .card-why {
-    min-height: 250px;
-    justify-content: center;
-    align-items: center;
-  }
-  .gap {
-    gap: 8px;
+    min-height: 350px;
   }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .card-why {
-    min-height: 280px;
+    min-height: 370px;
   }
 }
 </style>
